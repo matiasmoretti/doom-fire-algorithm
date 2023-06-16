@@ -5,6 +5,7 @@ const fireHeight = 3
 function start(){
     createFireDataStructure()
     console.log(firePixelsArray)
+    renderFire()
 }
 
 function createFireDataStructure() {
@@ -20,7 +21,26 @@ function createFirePropagation() {
 }
 
 function renderFire() {
+    let html = '<table cellpadding=0 cellspacing=0>'
 
+    for (let row = 0; row < fireHeight; row++) {
+        html += '<tr>'
+
+        for (let row = 0; row < fireWidth; column++) {
+            const pixelIndex = column + ( fireWidth * row)
+            
+            html += '<td>'
+            html += pixelIndex
+            html += '</td>'            
+
+        }
+
+        html += '</tr>'    
+    }
+
+    html += '</table>'
+
+    document.querySelector('#fireCanvas').innerHTML = html
 }
 
 start()
