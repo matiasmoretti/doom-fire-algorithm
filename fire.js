@@ -4,7 +4,8 @@ const fireHeight = 10
 
 function start(){
     createFireDataStructure()
-    console.log(firePixelsArray)
+    //console.log(firePixelsArray)
+    createFireSource()
     renderFire()
 }
 
@@ -43,6 +44,15 @@ function renderFire() {
     html += '</table>'
 
     document.querySelector('#fireCanvas').innerHTML = html
+}
+
+function createFireSource() {
+    for (let column = 0; column <= fireWidth; column++) {
+        const overflowPixelIndex = fireWidth * fireHeight
+        const pixelIndex = (overflowPixelIndex - fireWidth) + column
+        
+        firePixelsArray[pixelIndex] = 36;
+    }
 }
 
 start()
